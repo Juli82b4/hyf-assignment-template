@@ -2,3 +2,5 @@ Session Playground - My Assignment
 
 This file is a simple playground for notes and experiments during week 1.
 Add your thoughts, commands, and small examples here as you follow the exercises.
+
+Adding more text
