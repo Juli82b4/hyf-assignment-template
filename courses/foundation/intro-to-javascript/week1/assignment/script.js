@@ -1,15 +1,15 @@
 // Age-ify
-let yearBirth = 1989;
-let futureYear = 2040;
-let age = futureYear - yearBirth;
+const yearBirth = 1989;
+const futureYear = 2040;
+const age = futureYear - yearBirth;
 
 console.log(`You will be ${age} years old in ${futureYear}`);
 
 // Goodboy-Oldboy
-let dogYearOfBirth = 2025;
-let dogYearFuture = 2030;
-let dogYear = dogYearFuture - dogYearOfBirth;
-let shouldShowResultInDogYears = true;
+const dogYearOfBirth = 2025;
+const dogYearFuture = 2030;
+const dogYear = dogYearFuture - dogYearOfBirth;
+const shouldShowResultInDogYears = true;
 
 if (shouldShowResultInDogYears) {
     console.log(`Your dog will be ${dogYear * 7} dog years old in ${dogYearFuture}`)
@@ -18,17 +18,36 @@ if (shouldShowResultInDogYears) {
 }
 
 //Housey pricey (A house price estimator)
-let juliyaHouse = (5 * 11 * 8) * 2.5 * 1000 + 70 * 300;
-let peterHouse = (8 * 10 * 10) * 2.5 * 1000 + 100 * 300;
+//Peter's
+const peterWidth = 8;
+const peterDepth = 10;
+const peterHeight = 10;
+const peterGardenSize = 100;
+const peterCost = 2500000;
 
-console.log(`Juliya's house price ${juliyaHouse}`);
+const peterVolume = peterWidth * peterDepth * peterHeight;
+const peterHousePrice = peterVolume * 2500 + peterGardenSize * 300;
 
-console.log(`Peter's house price ${peterHouse}`);
-
-if (juliyaHouse > peterHouse) {
-    console.log(`Juliya's paying too much`);
+if (peterHousePrice > peterCost) {
+    console.log("Peter is paying too little");
 } else {
-    console.log(`Peter's paying too much`);
+    console.log("Peter is paying too much");
+}
+
+//Julia's
+const juliaWidth = 5;
+const juliaDepth = 11;
+const juliaHeight = 8;
+const juliaGardenSize = 70;
+const juliaCost = 1000000;
+
+const juliaVolume = juliaWidth * juliaDepth * juliaHeight;
+const juliaHousePrice = juliaVolume * 2500 + juliaGardenSize * 300;
+
+if (juliaHousePrice > juliaCost) {
+    console.log("Julia is paying too little");
+} else {
+    console.log("Julia is paying too much");
 }
 
 //Ez Namey (Startup name generator) Optional
@@ -58,7 +77,8 @@ const secondWords = [
     "Innovations"
 ];
 
-let randomNumber = Math.floor(Math.random() * 10);
-let startupName = firstWords[randomNumber] + " " + secondWords[randomNumber]
+const randomNumber1 = Math.floor(Math.random() * 10);
+const randomNumber2 = Math.floor(Math.random() * 10);
+const startupName = firstWords[randomNumber1] + " " + secondWords[randomNumber2]
 
 console.log(`The startup: ${startupName} contains ${startupName.length} characters`)
