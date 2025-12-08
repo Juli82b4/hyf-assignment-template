@@ -99,11 +99,12 @@ function getNote(id) {
         return;
     }
 
-    for (let i = 0; i < notes.length; i++) {
-        if (notes[i].id === id) {
-            return notes[i]
+    for (const note of notes) {
+        if (note.id === id){
+            return note;
         }
     }
+    
     return "notes not found"
 }
 
