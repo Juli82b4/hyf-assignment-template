@@ -104,7 +104,7 @@ function getNote(id) {
             return note;
         }
     }
-    
+
     return "notes not found"
 }
 
@@ -117,7 +117,7 @@ console.log(firstNote);
 let activities = []
 
 function addActivity(date, activity, duration) {
-    activities.push({ date: date, activity: activity, duration: duration })
+    activities.push({ date, activity, duration })
 }
 
 function showStatus() {
