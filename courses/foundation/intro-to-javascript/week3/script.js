@@ -60,9 +60,10 @@ const seriesDurations = [
     },
 ];
 
+const averageLifeSpan = 80;
 
 function logOutSeriesText() {
-    const lifeMinutes = 80 * 365 * 24 * 60;
+    const lifeMinutes = averageLifeSpan * 365 * 24 * 60;
     let total = 0;
 
     for (let series of seriesDurations) {
@@ -74,8 +75,6 @@ function logOutSeriesText() {
 
     console.log(`In total that is ${total.toFixed(3)}% of my life`);
 }
-
-
 
 logOutSeriesText();
 
