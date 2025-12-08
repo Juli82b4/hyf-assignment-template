@@ -20,20 +20,19 @@ if (index){
 }
 
 //..................When will we be there??
-function notThisFunctionName(travelInformation) {
+function getTotalDuration(travelInformation) {
     const time = (travelInformation.destinationDistance / travelInformation.speed) * 60
     const hours = Math.floor(time / 60);
     const minutes = time % 60;
 
-    return `${hours} hours and ${minutes.toFixed()} minutes`
-
+    return `${hours} hours and ${minutes.toFixed()} minutes`;
 }
 const travelInformation = {
     speed: 50,
     destinationDistance: 432,
 };
 
-const travelTime = notThisFunctionName(travelInformation);
+const travelTime = getTotalDuration(travelInformation);
 console.log(travelTime); // 8 hours and 38 minutes
 
 
