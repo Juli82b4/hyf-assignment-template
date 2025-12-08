@@ -12,7 +12,7 @@ const names = [
 const nameToRemove = "Ahmad";
 
 const index = names.indexOf(nameToRemove);
-if (index){
+if (index) {
     names.splice(index, 1)
     console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'Katrine', 'Tala']    
 } else {
@@ -100,7 +100,7 @@ function getNote(id) {
     }
 
     for (const note of notes) {
-        if (note.id === id){
+        if (note.id === id) {
             return note;
         }
     }
@@ -116,7 +116,9 @@ console.log(firstNote);
 
 let activities = []
 
-function addActivity(date, activity, duration) {
+function addActivity(activity, duration) {
+    const today = new Date();
+    const date = today.toLocaleDateString();
     activities.push({ date, activity, duration })
 }
 
@@ -137,10 +139,8 @@ function showStatus() {
     return `You have added ${numberOfActivities} activities. They amount to ${totalDuration} min. of usage`;
 }
 
-
-
-addActivity("23/7-18", "Youtube", 30);
-addActivity("23/7-18", "TikTok", 40);
-addActivity("23/7-18", "Instagram", 50);
+addActivity("Youtube", 30);
+addActivity("TikTok", 40);
+addActivity("Instagram", 50);
 
 console.log(showStatus());  
