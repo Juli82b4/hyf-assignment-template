@@ -12,11 +12,12 @@ const names = [
 const nameToRemove = "Ahmad";
 
 const index = names.indexOf(nameToRemove);
-names.splice(index, 1)
-
-console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'Katrine', 'Tala']
-
-
+if (index){
+    names.splice(index, 1)
+    console.log(names); // ['Peter', 'Yana', 'kristina', 'Rasmus', 'Samuel', 'Katrine', 'Tala']    
+} else {
+    console.log(`'${nameToRemove}' wasn't found in the names list!`)
+}
 
 //..................When will we be there??
 function notThisFunctionName(travelInformation) {
