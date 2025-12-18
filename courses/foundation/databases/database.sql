@@ -76,12 +76,11 @@ GROUP BY
 
 -- 10 Get the names of all statuses, sorted by the status with most tasks first.
 SELECT
-    COUNT(task.status_id) AS most_used,
-    name
+    status.name
 FROM
     status
     INNER JOIN task on task.status_id = status.id
 GROUP BY
     status.id
 ORDER BY
-    most_used DESC;
+    COUNT(task.status_id) DESC;
