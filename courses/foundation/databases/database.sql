@@ -17,16 +17,16 @@ SELECT
     *
 FROM
     task
-WHERE
-    status_id is 3;
+    INNER JOIN status ON status.id = task.status_id
+    AND status.name = "Done";
 
 -- 4 Find all the tasks that are not marked as done.
 SELECT
     *
 FROM
     task
-WHERE
-    status_id is not 3;
+    INNER JOIN status ON status.id = task.status_id
+    AND status.name != "Done";
 
 -- 5 Get all the tasks, sorted with the most recently created first.
 SELECT
@@ -42,7 +42,7 @@ SELECT
 FROM
     task
 ORDER BY
-    created
+    created DESC
 limit
     1;
 
