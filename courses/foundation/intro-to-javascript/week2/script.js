@@ -37,16 +37,16 @@ console.log(getEventWeekday(2));
 
 function whatToWear(temperature) {
     if (temperature > 25) {
-        return `The temperature is above ${temperature}°C, reccommended clothes are t-shirt and shorts`;
-    }
-    else if (temperature >= 15 && temperature <= 25) {
+        return `The temperature is above ${temperature}°C, recommended clothes are t-shirt and shorts`;
+    } else if (temperature >= 15 && temperature <= 25) {
         return `The temperature is ${temperature}°C, its between 15-25 so recommended cloth is thin jacket`;
-
     } else if (temperature <= 10) {
         return `The temperature is ${temperature}°C, its below 10 °C, wear a winter jacket`
     }
 
+    return `The temperature is ${temperature}°C`
 }
+
 const clothesToWear = whatToWear(30)
 console.log(clothesToWear)
 
@@ -96,16 +96,28 @@ console.log(getNumberOfStudents());
 const boughtCandyPrices = [];
 
 function addCandy(candyType, weight) {
-    let pricePerGram = 0;
+    let pricePerGram;
 
-    if (candyType === "sweet") {
-        pricePerGram = 0.5;
-    } else if (candyType === "chocolate") {
-        pricePerGram = 0.7;
-    } else if (candyType === "toffee") {
-        pricePerGram = 1.1;
-    } else if (candyType === "chewing-gum") {
-        pricePerGram = 0.03;
+    switch (candyType) {
+        case "sweet":
+            pricePerGram = 0.5;
+            break;
+
+        case "chocolate":
+            pricePerGram = 0.7;
+            break;
+
+        case "toffee":
+            pricePerGram = 1.1;
+            break;
+
+        case "chewing-gum":
+            pricePerGram = 0.03;
+            break;
+
+        default:
+            pricePerGram = 0;
+            break;
     }
 
     const price = weight * pricePerGram;
