@@ -14,7 +14,38 @@ const knexInstance = knex({
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello from exercise 2!");
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>Total Users</title>
+        <style>
+          body { font-family: Arial, sans-serif; padding: 20px; }
+        </style>
+      </head>
+      <body>
+        <h1>Total Users</h1>
+        <p id="count">Loading...</p>
+
+        <script>
+          async function loadUserCount() {
+            try {
+              const response = await fetch("/user-count");
+              const data = await response.json();
+              document.getElementById("count").textContent =
+                "There are " + data[0].user_count + " users in the database.";
+            } catch (err) {
+              document.getElementById("count").textContent = "Error loading data";
+              console.error(err);
+            }
+          }
+
+          loadUserCount();
+        </script>
+      </body>
+    </html>
+  `);
 });
 
 // Here is an example of the first route, /all-users, which returns all users sorted by their ID
@@ -95,6 +126,31 @@ app.get("/first-user", async (req, res) => {
   }
 
   res.json(rows);
+});
+
+/*
+Respond with the current time
+*/
+app.get("/currentTime", (req, res) => {
+  const currentTime = new Date().toLocaleTimeString();
+  res.json({ time: currentTime });
+});
+
+/*
+Respond with a random number between 1 and 100
+*/
+app.get("/randomNumber", (req, res) => {
+  const random = Math.floor(Math.random() * 100) + 1;
+  res.json({ number: random });
+});
+
+/*
+Greet a user by name
+Example: /greet/Juliya
+*/
+app.get("/greet/:name", (req, res) => {
+  const { name } = req.params;
+  res.send(`Hello, ${name}!`);
 });
 
 app.listen(port, () => {
