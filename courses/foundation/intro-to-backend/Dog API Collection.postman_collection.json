@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "e2094645-0869-4dc9-b4e6-0e46ff05f192",
+		"name": "Dog API Collection",
+		"description": "Collection for Dog API tasks using dog.ceo API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51297939",
+		"_collection_link": "https://juli82b4-7330872.postman.co/workspace/Juliya-Christendian-Sriraj's-Wo~e3d536b0-ecf9-425c-881d-5da8d740b20b/collection/51297939-e2094645-0869-4dc9-b4e6-0e46ff05f192?action=share&source=collection_link&creator=51297939"
+	},
+	"item": [
+		{
+			"name": "Random 5 Dogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breeds/image/random/5",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breeds",
+						"image",
+						"random",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Breeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breeds/list/all",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breeds",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Beagle Images",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breed/beagle/images/random/3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breed",
+						"beagle",
+						"images",
+						"random",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poodle Sub-Breeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breed/poodle/list",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breed",
+						"poodle",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toy Poodle Images",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/breed/poodle/toy/images",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"breed",
+						"poodle",
+						"toy",
+						"images"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://dog.ceo/api",
+			"type": "default"
+		}
+	]
+}
