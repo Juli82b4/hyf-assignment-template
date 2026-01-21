@@ -3,9 +3,28 @@ console.log("Script loaded");
 const products = getAvailableProducts();
 console.log(products);
 
-// This should create the ul and the li's with the individual products details
+function findDom(dom) {
+  return document.querySelector(dom)
+}
+
+const productsList = findDom("#product-list");
+if (!productsList) {
+  console.warn("Product list DOM element is not found in the document!")
+}
+
 function renderProducts(products) {
-  // your code goes here
+  for (product of products) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <div style='padding: 1rem;'>
+        Title: ${product.name}<br />
+        Rate: ${product.rating}<br />
+        Price: ${product.price}
+      </div>
+    `;
+
+    productsList.appendChild(li)
+  }
 }
 
 renderProducts(products); 
