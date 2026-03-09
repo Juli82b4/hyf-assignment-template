@@ -1,7 +1,5 @@
 Cabbage
 Egg Plant
-Carrot
+Pumkin
 Tomato
 Onions
-Peas
-Beetroot
