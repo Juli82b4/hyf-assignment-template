@@ -1,23 +1,19 @@
-const btn = document.getElementById('colorBtn');
-if (!btn) {
-    throw new Error('Could not find button with id "colorBtn"');
-}
+const btn = document.getElementById("colorBtn");
 
 const colors = [
-    '#6CD4FF',
-    '#8C52FF',
-    '#FF6B6B',
-    '#FFB86B',
-    '#7AF0C7',
-    '#C39CFF',
-    '#FFE66D',
-    '#FF8FAB'
+    "#FFD6E8",  
+    "#D6F5FF",  
+    "#E8FFD6",  
+    "#FFF5CC",  
+    "#E6D6FF",  
+    "#FFE4D6"   
 ];
 
-btn.addEventListener('click', () => {
-    const colorCount = colors.length;
-    const randomNumber = Math.random();
-    const randomIndex = Math.floor(randomNumber * colorCount);
-    const color = colors[randomIndex];
-    document.body.style.background = color;
-});
+if (btn) {
+    btn.addEventListener("click", function () {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        document.body.style.backgroundColor = colors[randomIndex];
+    });
+}
+
+
