@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>TASK 1</h1>
+    <div id="task1Output"></div>
+    <button id="btn">Click me</button>
+
+    <h1>Task 2</h1>
+    <div id="task2Output"></div>
+    <button id="earthBtn">Show Earth</button>
+    <button id="saturnBtn">Show Saturn</button>
+
+
+    <h1>Location</h1>
+    <button id="locationBtn">Log Location</button>
+    <div id="output"></div>
+
+    <h1>Run after the delay</h1>
+    <input type="text" id="delayInput" placeholder="Enter seconds">
+    <button id="runBtn">Run</button>
+    <p id="delayOutput"></p>
+
+    <h1>Double Click</h1>
+    <div id="clickOutput"></div>
+
+    <div class="container">
+        <h1>Fastest Presser</h1>
+        <input type="number" id="gameTime" placeholder="Enter seconds" min="1"> <br><br>
+
+        <button id="startButton">Start game!</button><br>
+        <hr>
+
+        <div id="gameArea">
+            <div class="keyBox">
+                Press S (<span id="sCount">0</span>)
+            </div>
+
+            <div class="keyBox">
+                Press L (<span id="lCount">0</span>)
+            </div>
+        </div>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
