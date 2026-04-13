@@ -1,7 +1,7 @@
-let amountInput = document.getElementById("amount");
-let result = document.getElementById("result");
-let fromCurrency = document.getElementById("fromCurrency");
-let toCurrency = document.getElementById("toCurrency");
+const amountInput = document.getElementById("amount");
+const result = document.getElementById("result");
+const fromCurrency = document.getElementById("fromCurrency");
+const toCurrency = document.getElementById("toCurrency");
 let rates;
 
 fetch("https://open.er-api.com/v6/latest/DKK")
@@ -29,10 +29,11 @@ fetch("https://open.er-api.com/v6/latest/DKK")
 
 
 function convert() {
+
     let amount = Number(amountInput.value);
 
 
-    if (!amount) {
+    if (amount <= 0) {
         result.textContent = "0.00";
         return;
     }
