@@ -1,3 +1,5 @@
+const sCount = document.getElementById("sCount")
+const lCount = document.getElementById("lCount")
 // 2.Function
 /*Display the text Called after 2.5 seconds on the page 2.5 seconds after the script is loaded.
 Create a function that takes 2 parameters: delay and stringToLog. 
@@ -53,13 +55,13 @@ document.getElementById("saturnBtn").addEventListener("click", () => planetLogFu
 display the user's location (latitude, longitude) 
 on the page using this browser API.*/
 
-document.getElementById("locationBtn").onclick = function () {
+document.getElementById("locationBtn").addEventListener("click", function () {
     navigator.geolocation.getCurrentPosition(function (myLocation) {
         console.log(myLocation)
         document.getElementById("output").textContent =
             "Latitude: " + myLocation.coords.latitude + ", Longitude: " + myLocation.coords.longitude;
     });
-};
+});
 
 /* 1.7 Create a function called runAfterDelay. It has two parameters: delay and callback.
 When called the function should wait delay seconds and then call the provided callback function.
@@ -116,7 +118,7 @@ Otherwise it should call logBadJoke, which displays a bad joke on the page.*/
 
 function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
 
-    if (shouldTellFunnyJoke === true) {
+    if (shouldTellFunnyJoke) {
         logFunnyJoke();
     } else {
         logBadJoke();
@@ -190,19 +192,19 @@ document.getElementById("startButton").addEventListener("click", () => {
     l = 0;
     playing = true;
 
-    document.getElementById("sCount").innerText = 0;
-    document.getElementById("lCount").innerText = 0;
-    document.getElementById("message").innerText = "GO!";
+    document.getElementById("sCount").textContent = 0;
+    document.getElementById("lCount").textContent = 0;
+    document.getElementById("message").textContent = "GO!";
 
     setTimeout(() => {
         playing = false;
 
         if (s > l) {
-            document.getElementById("message").innerText = "S wins";
+            document.getElementById("message").textContent = "S wins";
         } else if (l > s) {
-            document.getElementById("message").innerText = "L wins";
+            document.getElementById("message").textContent = "L wins";
         } else {
-            document.getElementById("message").innerText = "It's a tie";
+            document.getElementById("message").textContent = "It's a tie";
         }
 
     }, time * 1000);
@@ -213,12 +215,12 @@ document.addEventListener("keydown", function (e) {
 
     if (e.key.toLowerCase() === "s") {
         s++;
-        document.getElementById("sCount").innerText = s;
+        sCount.textContent = s;
     }
 
     if (e.key.toLowerCase() === "l") {
         l++;
-        document.getElementById("lCount").innerText = l;
+        lcount.textContent = l;
     }
 });
 
