@@ -1,8 +1,8 @@
 /*Map and filter method - Task 1*/
 
-let numbers = [1, 2, 3, 4];
+const numbers = [1, 2, 3, 4];
 
-let newNumbers = numbers
+const newNumbers = numbers
   .filter(n => n % 2 !== 0)
   .map(n => n * 2);
 
@@ -12,7 +12,7 @@ console.log(newNumbers);
 
 // | 1 |----Short Titles----//
 
-let shortTitles = [];
+const shortTitles = [];
 for (let i = 0; i < movies.length; i++) {
   if (movies[i].title.length <= 5) {
     shortTitles.push(movies[i].title);
@@ -22,7 +22,7 @@ document.getElementById("short").textContent = shortTitles.join(", ");
 
 // | 2 |---- long movie titles----//  
 
-let longTitles = [];
+const longTitles = [];
 for (let i = 0; i < movies.length; i++) {
   if (movies[i].title.length > 50) {
     longTitles.push(movies[i].title);
@@ -66,7 +66,7 @@ console.log(ratingsOver6)
 
 function countMoviesByKeyword(movies) {
 
-  let count = 0;
+  const count = 0;
 
   for (let i = 0; i < movies.length; i++) {
     let title = movies[i].title.toLowerCase();
@@ -87,11 +87,11 @@ document.getElementById("keywords").textContent = countMoviesByKeyword(movies);
 
 // | 7 |--- Surfer, Alien, Bejamin---//
 
-let duplicatedMovies = [];
+const duplicatedMovies = [];
 
 for (let i = 0; i < movies.length; i++) {
-  let words = movies[i].title.toLowerCase().split(" ");
-  let seen = [];
+  const words = movies[i].title.toLowerCase().split(" ");
+  const seen = [];
 
   for (let j = 0; j < words.length; j++) {
     if (seen.includes(words[j])) {
