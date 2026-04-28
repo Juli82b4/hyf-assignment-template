@@ -1,37 +1,74 @@
 import { useState } from 'react';
-
 import styles from './DestinationPage.module.css';
 
 // Task - Week 2
 // Move this to its own file
-const PlanetWishlistItem = ({
-  name,
-  onRemove,
-  thumbnail,
-}) => {
-  return (
-    <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
-      <b>{name.toUpperCase()}</b>
-      <button onClick={onRemove}>remove</button>
-    </div>
-  );
-}
-
+import { PlanetWishlistItem } from "./PlanetWishlistItem.jsx";
+import { PlanetCard } from "./PlanetCard.jsx";
 
 export const Destinations = () => {
-  const [selectedPlanets, onAddPlanet] = useState([]);
+  const planetsData = [
+    {
+      name: "Europa",
+      description:
+        "Europa, one of Jupiter’s moons, is an icy world with a hidden ocean beneath its surface. This mysterious moon is a prime candidate for the search for extraterrestrial life, making it a thrilling destination for space explorers.",
+      thumbnail: "/destination/image-europa.png",
+    },
+    {
+      name: "Mars",
+      description:
+        "Mars, the Red Planet, is a barren yet fascinating world with vast deserts, towering volcanoes, and the deepest canyon in the solar system. As humanity’s next frontier, Mars invites us to dream of colonization and the possibilities of life beyond Earth.",
+      thumbnail: "/destination/image-mars.png",
+    },
+    {
+      name: "Moon",
+      description:
+        "Our closest celestial neighbor, the Moon, is a silent witness to Earth's history. With its stunning craters and desolate landscapes, the Moon offers a unique glimpse into space exploration's past and future, making it a perfect destination for lunar adventurers.",
+      thumbnail: "/destination/image-moon.png",
+    },
+    {
+      name: "Titan",
+      description:
+        "Titan, Saturn's largest moon, is a world of dense atmosphere and liquid methane lakes. This enigmatic moon is shrouded in a thick orange haze, concealing a landscape that is both alien and strangely familiar, beckoning explorers to uncover its secrets.",
+      thumbnail: "/destination/image-titan.png",
+    },
+  ];
 
-  let isPlanetSelected = false;
-  let numberOfPlanets = 0;
+  const [selectedPlanets, setSelectedPlanets] = useState([]);
+
+  const numberOfPlanets = selectedPlanets.length;
+
+  const isPlanetSelected = (name) => {
+    return selectedPlanets.some((planet) => planet.name === name);
+  };
+
+  const addPlanet = (name, index) => {
+    setSelectedPlanets([
+      ...selectedPlanets,
+      { name, index },
+    ]);
+  };
+
+  const removePlanet = (name) => {
+    setSelectedPlanets(
+      selectedPlanets.filter(
+        (planet) => planet.name !== name
+      )
+    );
+  };
 
   const onAddOrRemovePlanet = (name, index) => {
+    if (isPlanetSelected(name)) {
+      removePlanet(name);
+    } else {
+      addPlanet(name, index);
+    }
     // Task - Week 2
     // Implement this function
     // If you press the "ADD PLANET" the selected planet should display "SELECTED"
     // And the counter should update, how many planets are selected (numberOfPlanets)
     console.log(`You seleceted the following planet: ${name}, with the index of ${index}`);
-  }
+  };
 
   return (
     <div className="fullBGpicture">
@@ -42,10 +79,14 @@ export const Destinations = () => {
           {/* Task - Week 2 */}
           {/* Display the number Of selected planets */}
           {/* Display the "no planets" message if it is empty! */}
-          <p>No planets in wishlist :(</p>
-          <p>You have {numberOfPlanets} in your wishlist</p>
-          <b>List coming soon after lesson 3!</b>
-          
+          {selectedPlanets.length === 0 ? (
+            <p>No planets in wishlist :(</p>
+          ) : (
+            <p>
+              You have {numberOfPlanets} in your wishlist
+            </p>
+          )}
+
           {/* STOP! - this is for week 3!*/}
           {/* Task - Week 3 */}
           {/* Import the AddWishlistItem react component */}
@@ -76,32 +117,18 @@ export const Destinations = () => {
           {/* Use the README.md file for descriptions */}
           {/* Create a <PlanetCard /> component, which accepts the following properties: */}
           {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
-          <div className={styles.planetCard}>
-            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button 
-              className="roundButton" 
-              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
-            > 
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
-          <div className={styles.planetCard}>
-            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button 
-              className="roundButton" 
-              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
-            > 
-              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
-            </button>
-          </div>
+
+          {planetsData.map((planet, index) => (
+            <PlanetCard
+              name={planet.name}
+              description={planet.description}
+              thumbnail={planet.thumbnail}
+              isSelected={isPlanetSelected(planet.name)}
+              onAddOrRemovePlanet={() =>
+                onAddOrRemovePlanet(planet.name, index)
+              }
+            />
+          ))}
         </section>
       </main>
     </div>
