@@ -120,7 +120,6 @@ export const Destinations = () => {
 
           {planetsData.map((planet, index) => (
             <PlanetCard
-              key={planet.name}
               name={planet.name}
               description={planet.description}
               thumbnail={planet.thumbnail}
