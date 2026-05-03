@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar.jsx";
+import { Footer } from "./footer.jsx";
 
 export const metadata = {
   title: "Galactica",
@@ -12,6 +13,7 @@ export const RootLayout = () => {
       <Navbar />
       <Outlet />
       {/* Task - Week 1 */}
+      <Footer />
       {/* Import and use the Footer component here */}
       {/* Footer found in the ui/Footer.js folder */}
     </div>
