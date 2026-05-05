@@ -9,7 +9,7 @@ export const PlanetWishlistItem = ({
         <div className={styles.wishlistItem}>
             <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
             <b>{name.toUpperCase()}</b>
-            <button onClick={onRemove}>remove</button>
+            <button className={styles.removeBtn}onClick={onRemove}>remove</button>
         </div>
     );
 };
