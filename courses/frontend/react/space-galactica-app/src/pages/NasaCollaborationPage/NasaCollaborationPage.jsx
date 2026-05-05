@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './NasaCollaborationPage.module.css';
-import { RoverPhoto } from "./../../components/RoverPhoto";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
@@ -25,16 +24,7 @@ export const NasaCollaboration = () => {
 
     // Task - Week 3 
     // fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable
-    const fetchAstronomyPicOfTheDay = async () => {
-      const response = await fetch(NASA_URLs.astronomyPicOfTheDay).then(res =>
-        res.json()
-      );
-      setDailyImg(response);
-    };
-
-    fetchAstronomyPicOfTheDay();
   }, []);
-
 
   return (
     <div className="fullBGpicture">
@@ -46,17 +36,6 @@ export const NasaCollaboration = () => {
           {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here */}
           {/* You should display the title, explanation, and the image using the url from the response */}
           {/* <img src={dailyImg.url}> */}
-          {dailyImg?.url && (
-            <>
-              <h3>{dailyImg.title}</h3>
-              <img
-                className={styles.nasaPicOfTheDayImg}
-                src={dailyImg.url}
-                alt={dailyImg.title}
-              />
-              <p>{dailyImg.explanation}</p>
-            </>
-          )}
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
@@ -75,19 +54,13 @@ export const NasaCollaboration = () => {
                 {/* If you don't know how the data looks like you can: */}
                 {/* 1. use console.log() to write the data to the console */}
                 {/* 2. use the network tab in the developer tab - https://developer.chrome.com/docs/devtools/network */}
-                {roverPhoto.photos.map((photo) => (
-                  <RoverPhoto
-                    key={photo.id}
-                    src={photo.img_src}
-                    date={photo.earth_date}
-                    roverName={photo.rover.name}
-                  />
-                ))}
+                <p>Date {roverPhoto.photos[0]?.earth_date}</p>
+                <img className={styles.nasaPicOfTheDayImg} src={roverPhoto.photos[0]?.img_src} alt={dailyImg.title} />
               </>
-            ) : (
-              <p>Loading rover photos...</p>
-            )
-          }
+              ) : (
+                <p>Loading rover photos...</p>
+              )
+            }
         </section>
       </main>
     </div>

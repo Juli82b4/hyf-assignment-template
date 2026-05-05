@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './DestinationPage.module.css';
-import { AddWishlistItem } from "./AddWishlistItem"
 
 // Task - Week 2
 // Move this to its own file
@@ -91,29 +90,25 @@ export const Destinations = () => {
           {/* STOP! - this is for week 3!*/}
           {/* Task - Week 3 */}
           {/* Import the AddWishlistItem react component */}
-          <AddWishlistItem
-            onAddWishlistItem={(item) =>
-              setSelectedPlanets([...selectedPlanets, item])
-            }
-          />
+          {/* <AddWishlistItem /> */}
           {/* Task - Week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
           {/* uncomment the following code snippet: */}
-
+          {/* 
           <h3>Your current wishlist</h3>
-
           <div className={styles.wishlistList}>
-            {selectedPlanets.map((planet) => (
-              <PlanetWishlistItem
-                key={planet.name}
-                name={planet.name}
-                thumbnail={planet.thumbnail}
-                onRemove={() => removePlanet(planet.name)}
-              />
-            ))}
-          </div>
-
+            <PlanetWishlistItem 
+              name="europa"
+              onRemove={() => removeFromWishlist('europa')}
+              thumbnail="/destination/image-europa.png"
+            />
+            <PlanetWishlistItem 
+              name="europa"
+              onRemove={() => removeFromWishlist('europa')}
+              thumbnail="/destination/image-europa.png"
+            />
+          </div> */}
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
@@ -125,7 +120,6 @@ export const Destinations = () => {
 
           {planetsData.map((planet, index) => (
             <PlanetCard
-              key={planet.name}
               name={planet.name}
               description={planet.description}
               thumbnail={planet.thumbnail}
