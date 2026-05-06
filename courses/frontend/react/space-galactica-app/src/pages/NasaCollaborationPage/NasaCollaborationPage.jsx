@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './NasaCollaborationPage.module.css';
-import { RoverPhoto } from "./../../components/RoverPhoto";
+import { RoverPhoto } from "../../components/RoverPhoto.jsx";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
