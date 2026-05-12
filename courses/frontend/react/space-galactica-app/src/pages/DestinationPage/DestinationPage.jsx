@@ -1,11 +1,8 @@
-import { useState } from 'react';
-import styles from './DestinationPage.module.css';
-import { AddWishlistItem } from "./AddWishlistItem"
-
-// Task - Week 2
-// Move this to its own file
+import { useCart } from "../../context/CartContext";
+import { AddWishlistItem } from "./AddWishlistItem";
 import { PlanetWishlistItem } from "./PlanetWishlistItem.jsx";
 import { PlanetCard } from "./PlanetCard.jsx";
+import styles from "./DestinationPage.module.css";
 
 export const Destinations = () => {
   const planetsData = [
@@ -35,76 +32,48 @@ export const Destinations = () => {
     },
   ];
 
-  const [selectedPlanets, setSelectedPlanets] = useState([]);
+  const { cart, addToCart, removeFromCart } = useCart();
 
-  const numberOfPlanets = selectedPlanets.length;
+  const isPlanetSelected = (name) =>
+    cart.some((planet) => planet.name === name);
 
-  const isPlanetSelected = (name) => {
-    return selectedPlanets.some((planet) => planet.name === name);
-  };
-
-  const addPlanet = (name, index) => {
-    setSelectedPlanets([
-      ...selectedPlanets,
-      { name, index },
-    ]);
-  };
+  const addPlanet = (planet) => addToCart(planet);
 
   const removePlanet = (name) => {
-    setSelectedPlanets(
-      selectedPlanets.filter(
-        (planet) => planet.name !== name
-      )
-    );
+    const item = cart.find((p) => p.name === name);
+    if (item) removeFromCart(item.id);
   };
 
-  const onAddOrRemovePlanet = (name, index) => {
-    if (isPlanetSelected(name)) {
-      removePlanet(name);
+  const onAddOrRemovePlanet = (planet) => {
+    if (isPlanetSelected(planet.name)) {
+      removePlanet(planet.name);
     } else {
-      addPlanet(name, index);
+      addPlanet(planet);
     }
-    // Task - Week 2
-    // Implement this function
-    // If you press the "ADD PLANET" the selected planet should display "SELECTED"
-    // And the counter should update, how many planets are selected (numberOfPlanets)
-    console.log(`You seleceted the following planet: ${name}, with the index of ${index}`);
   };
 
   return (
     <div className="fullBGpicture">
       <main className="mainContent">
         <h1>Travel destinations</h1>
+
         <section className="card">
           <h2>Wishlist</h2>
-          {/* Task - Week 2 */}
-          {/* Display the number Of selected planets */}
-          {/* Display the "no planets" message if it is empty! */}
-          {selectedPlanets.length === 0 ? (
+
+          {cart.length === 0 ? (
             <p>No planets in wishlist :(</p>
           ) : (
-            <p>
-              You have {numberOfPlanets} in your wishlist
-            </p>
+            <p>You have {cart.length} in your wishlist</p>
           )}
 
-          {/* STOP! - this is for week 3!*/}
-          {/* Task - Week 3 */}
-          {/* Import the AddWishlistItem react component */}
           <AddWishlistItem
-            onAddWishlistItem={(item) =>
-              setSelectedPlanets([...selectedPlanets, item])
-            }
+            onAddWishlistItem={(item) => addToCart(item)}
           />
-          {/* Task - Week 3 */}
-          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
-          {/* Implement the "REMOVE" function */}
-          {/* uncomment the following code snippet: */}
 
           <h3>Your current wishlist</h3>
 
           <div className={styles.wishlistList}>
-            {selectedPlanets.map((planet) => (
+            {cart.map((planet) => (
               <PlanetWishlistItem
                 key={planet.name}
                 name={planet.name}
@@ -113,15 +82,10 @@ export const Destinations = () => {
               />
             ))}
           </div>
-
         </section>
+
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* Task - Week 2 */}
-          {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
-          {/* Use the README.md file for descriptions */}
-          {/* Create a <PlanetCard /> component, which accepts the following properties: */}
-          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
 
           {planetsData.map((planet, index) => (
             <PlanetCard
@@ -130,15 +94,13 @@ export const Destinations = () => {
               description={planet.description}
               thumbnail={planet.thumbnail}
               isSelected={isPlanetSelected(planet.name)}
-              onAddOrRemovePlanet={() =>
-                onAddOrRemovePlanet(planet.name, index)
-              }
+              onAddOrRemovePlanet={() => onAddOrRemovePlanet(planet)}
             />
           ))}
         </section>
       </main>
     </div>
   );
-}
+};
 
 export default Destinations;

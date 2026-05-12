@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './DestinationPage.module.css';
 
-export  const AddWishlistItem = ({
+export const AddWishlistItem = ({
   onAddWishlistItem,
 }) => {
   const [thumbnail, onThumbnailChange] = useState('/destination/image-europa.png');
@@ -25,7 +25,7 @@ export  const AddWishlistItem = ({
     setCustomWishlist('');
   }
 
-
+  
   return (
     <div className={styles.addWishlistItem}>
       <p>Add custom planet to wishlist</p>
