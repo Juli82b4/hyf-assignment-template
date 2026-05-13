@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import DestinationPage from "./pages/DestinationPage/DestinationPage.jsx";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage.jsx";
 import NasaCollaboration from "./pages/NasaCollaborationPage/NasaCollaborationPage.jsx";
+import { WishlistProvider } from "./contexts/WishlistContext.jsx";
+
 
 import "./main.css";
 
@@ -13,9 +15,9 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      { 
-          index: true,
-          element: <HomePage /> 
+      {
+        index: true,
+        element: <HomePage />
       },
       {
         path: "/destination",
@@ -35,6 +37,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <WishlistProvider>
+      <RouterProvider router={router} />
+    </WishlistProvider>
   </React.StrictMode>,
 );

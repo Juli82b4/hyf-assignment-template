@@ -2,7 +2,7 @@
   inset-inline-start: 0;
   inset-inline-end: 0;
   inset-block-end: 0;
-  background-color: #eee;
+  background-color: #080d15;
   color: #000;
   padding: var(--spacing-20) var(--spacing-40);
   display: flex;
@@ -14,13 +14,13 @@
 }
 
 .footer h3 {
-  color: #000;
+  color: #969090;
   font-size: large;
   padding: var(--spacing-08) 0;
 }
 
 .footer p, .footer a, .footer li {
-  color: #000;
+  color: #b9aeae;
   font-size: medium;
   font-weight: 200;
   text-align: start;

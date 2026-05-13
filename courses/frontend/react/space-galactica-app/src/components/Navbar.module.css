@@ -3,75 +3,96 @@
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: var(--spacing-16) var(--spacing-40);
+
   height: var(--header-height);
-  max-height: var(--header-height);
+  padding: 0 var(--spacing-40);
+
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
   z-index: 10;
 }
 
-.decorativeLine {
-  height: 0.1px;
-  width: 30vw;
-  background-color: #999;
-  margin-inline-end: -60px;
-  z-index: 10;
-}
 
-.navbarLogo {
-  margin-inline-end: var(--spacing-20);
+.navbarLogo a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 500;
 }
 
 .navbarLogo img {
   height: 40px;
 }
 
-.navbarLogo a {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-20);
-  font-size: large;
-  font-weight: 600;
-  color: #fff;
-}
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 var(--spacing-8);
-  margin: var(--spacing-20);
-  background-color: transparent;
-
-}
-
-.navbarBG {
+.badge {
   position: absolute;
-  width: 100%;
-  height: 60%;
-  backdrop-filter: blur(20px);
+  top: -6px;
+  right: -10px;
+
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  background: #3b82f6;
+  color: white;
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
+
 
 .navbarList {
-  position: relative;
-  list-style-type: none;
   display: flex;
-  padding: 0 var(--spacing-40);
-  gap: var(--spacing-20);
-  z-index: 10;
+  gap: 20px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 
 .navbarLinks a {
-  color: white;
-  text-decoration: none;
-  font-weight: 200;
-  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 6px;
+
+  font-weight: 300;
 }
 
-.navbarLinks:hover, .isLinkActive {
-  border-block-end: var(--spacing-04) solid var(--border-color);
-  margin-block-end: -4px;
+
+.navbarLinks a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 0%;
+  height: 2px;
+
+  background: #3b82f6;
+  transition: width 0.25s ease;
+}
+
+.navbarLinks a:hover::after,
+.isLinkActive::after {
+  width: 100%;
+}
+
+
+.isLinkActive {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
 }

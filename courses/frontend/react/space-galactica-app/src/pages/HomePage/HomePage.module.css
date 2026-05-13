@@ -8,9 +8,10 @@
   background-position: center;
   height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 var(--spacing-64);
+  gap: 100px;
 }
 
 .heroContent {
@@ -39,10 +40,10 @@ p.heroJumbo {
 
 
 .exploreButton {
-  height: 250px;
-  width: 250px;
+  height: 240px;
+  background-color: rgb(54, 54, 118);
+  width: 270px;
   line-height: 250px;
-  background-color: white;
   border-radius: 50%;
   font-size: 30px;
   font-weight: 200;
