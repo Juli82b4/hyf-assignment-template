@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './DestinationPage.module.css';
 import { AddWishlistItem } from "./AddWishlistItem"
+import { useWishlist } from "../../contexts/WishlistContext";
 
 // Task - Week 2
 // Move this to its own file
@@ -8,6 +9,14 @@ import { PlanetWishlistItem } from "./PlanetWishlistItem.jsx";
 import { PlanetCard } from "./PlanetCard.jsx";
 
 export const Destinations = () => {
+  const {
+    planetsWishlist,
+    addPlanetToWishlist,
+    removePlanetFromWishlist,
+    isPlanetInWishlist,
+    wishlistCount,
+  } = useWishlist();
+
   const planetsData = [
     {
       name: "Europa",
@@ -35,35 +44,16 @@ export const Destinations = () => {
     },
   ];
 
-  const [selectedPlanets, setSelectedPlanets] = useState([]);
-
-  const numberOfPlanets = selectedPlanets.length;
-
-  const isPlanetSelected = (name) => {
-    return selectedPlanets.some((planet) => planet.name === name);
-  };
-
-  const addPlanet = (name, index) => {
-    setSelectedPlanets([
-      ...selectedPlanets,
-      { name, index },
-    ]);
-  };
-
-  const removePlanet = (name) => {
-    setSelectedPlanets(
-      selectedPlanets.filter(
-        (planet) => planet.name !== name
-      )
-    );
-  };
-
   const onAddOrRemovePlanet = (name, index) => {
-    if (isPlanetSelected(name)) {
-      removePlanet(name);
+    if (isPlanetInWishlist(name)) {
+      removePlanetFromWishlist(name);
     } else {
-      addPlanet(name, index);
+      addPlanetToWishlist({
+        name,
+        thumbnail: planetsData[index].thumbnail,
+      });
     }
+
     // Task - Week 2
     // Implement this function
     // If you press the "ADD PLANET" the selected planet should display "SELECTED"
@@ -75,16 +65,19 @@ export const Destinations = () => {
     <div className="fullBGpicture">
       <main className="mainContent">
         <h1>Travel destinations</h1>
+
         <section className="card">
           <h2>Wishlist</h2>
+
           {/* Task - Week 2 */}
           {/* Display the number Of selected planets */}
           {/* Display the "no planets" message if it is empty! */}
-          {selectedPlanets.length === 0 ? (
+
+          {planetsWishlist.length === 0 ? (
             <p>No planets in wishlist :(</p>
           ) : (
             <p>
-              You have {numberOfPlanets} in your wishlist
+              You have {wishlistCount} in your wishlist
             </p>
           )}
 
@@ -93,9 +86,10 @@ export const Destinations = () => {
           {/* Import the AddWishlistItem react component */}
           <AddWishlistItem
             onAddWishlistItem={(item) =>
-              setSelectedPlanets([...selectedPlanets, item])
+              addPlanetToWishlist(item)
             }
           />
+
           {/* Task - Week 3 */}
           {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
           {/* Implement the "REMOVE" function */}
@@ -104,24 +98,27 @@ export const Destinations = () => {
           <h3>Your current wishlist</h3>
 
           <div className={styles.wishlistList}>
-            {selectedPlanets.map((planet) => (
+            {planetsWishlist.map((planet) => (
               <PlanetWishlistItem
                 key={planet.name}
                 name={planet.name}
                 thumbnail={planet.thumbnail}
-                onRemove={() => removePlanet(planet.name)}
+                onRemove={() =>
+                  removePlanetFromWishlist(planet.name)
+                }
               />
             ))}
           </div>
 
         </section>
+
         <section className="card">
           <h2>Possible destinations</h2>
+
           {/* Task - Week 2 */}
           {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
           {/* Use the README.md file for descriptions */}
           {/* Create a <PlanetCard /> component, which accepts the following properties: */}
-          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
 
           {planetsData.map((planet, index) => (
             <PlanetCard
@@ -129,12 +126,13 @@ export const Destinations = () => {
               name={planet.name}
               description={planet.description}
               thumbnail={planet.thumbnail}
-              isSelected={isPlanetSelected(planet.name)}
+              isSelected={isPlanetInWishlist(planet.name)}
               onAddOrRemovePlanet={() =>
                 onAddOrRemovePlanet(planet.name, index)
               }
             />
           ))}
+
         </section>
       </main>
     </div>

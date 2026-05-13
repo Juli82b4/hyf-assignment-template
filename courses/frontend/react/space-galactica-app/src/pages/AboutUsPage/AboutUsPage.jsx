@@ -7,7 +7,7 @@ export const AboutUsPage = () => {
   return (
     <main className={styles.mainContent}>
 
-      <section className={styles.description}>
+      <section className={styles.mainDescription}>
         <h2>Our Mission</h2>
       </section>
 

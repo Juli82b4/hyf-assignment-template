@@ -1,28 +1,40 @@
 .app {
   background-color: black;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("..../destination./background-destination-desktop.jpg") no-repeat center / cover;
+  z-index: -1;
 }
 
 .mainContent {
   max-width: 900px;
-  margin: 40px auto 0;
-  padding: 50px 20px;
+  margin: 0 auto;
+  padding: calc(var(--header-height) + 60px) 20px 60px;
   color: white;
   font-family: Arial, sans-serif;
 }
 
 .mainDescription {
   text-align: center;
-  color: black;
+  margin-bottom: 40px;
 }
 
 .card {
-  background: linear-gradient(145deg, #1a1f2e, #0f1420);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+
   padding: 25px;
   margin-bottom: 20px;
+
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .card h2 {
@@ -30,14 +42,14 @@
   color: #4fc3f7;
 }
 
-p {
+.card p {
   color: #dcdcdc;
   line-height: 1.6;
 }
 
 h3 {
   margin-top: 15px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .partners {
@@ -50,9 +62,10 @@ h3 {
 
 .partners img {
   width: 90px;
+  filter: brightness(0.9);
+  transition: transform 0.2s ease;
 }
 
-.description {
-  text-align: center;
-  color: #1a1f2e;
+.partners img:hover {
+  transform: scale(1.05);
 }
